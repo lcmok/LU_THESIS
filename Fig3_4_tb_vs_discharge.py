@@ -12,6 +12,7 @@ import numpy as np
 from PIL import Image
 import io
 
+#Change path according to where your csv file is located (columns: D-M-YYYY date, discharge, cmc-ratio and m index. column headers over column 2,3, and 4: Q, rcmc and m).
 C0 = pd.read_csv('/Users/lcmok/OneDrive/Documenten/Lund University/THESIS/Publication/Scriptsdataforfigures/C0_fig_season.csv', delimiter = ';', header = 0, na_filter=True, index_col=[0])
 C0.index = pd.to_datetime(C0.index, dayfirst=True)
 Cyears = np.asarray(C0.index.year)
@@ -79,4 +80,4 @@ sp2.set_title('B.', size=8, loc='left')
 sp3.set_title('C.', size=8, loc='left')
 plt.show()
 
-fig.savefig('Figure2.tiff',dpi=300)
+fig.savefig('Figure2.tiff',dpi=300) #this will save your file with 300 dpi
