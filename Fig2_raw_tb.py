@@ -13,6 +13,7 @@ from PIL import Image
 import io
 
 #import data
+#Change path according to where your csv file is located (columns: D-M-YYYY date, Cd, M, Cw).
 C0 = pd.read_csv('/Users/lcmok/OneDrive/Documenten/Lund University/THESIS/Publication/Scriptsdataforfigures/C0_fig.csv', delimiter = ';', header = 0, na_filter=True, index_col=[0])
 K2 = pd.read_csv('/Users/lcmok/OneDrive/Documenten/Lund University/THESIS/Publication/Scriptsdataforfigures/K2_fig.csv', delimiter = ';', header = 0, na_filter=True, index_col=[0])
 K0 = pd.read_csv('/Users/lcmok/OneDrive/Documenten/Lund University/THESIS/Publication/Scriptsdataforfigures/K0_fig.csv', delimiter = ';', header = 0, na_filter=True, index_col=[0])
