@@ -183,18 +183,18 @@ else:
     wcpointsnew = [(wcx, wcy)]
     wcpointsnew = nsidc2.proj_coords(wcpointsnew, proj_in, proj_out)
 
-if location == 'chikwawa': 
-
-loni, lati = pyproj.transform(proj_in, proj_out, xi, yi)
-p = ax.pcolormesh(loni, lati, ds['TB'].values[5], transform=ccrs.PlateCarree(), cmap='terrain')
-# also plot some points of interest  -> note that this plots both locations in one plot, if the script does not not Ccoordsave and Mccoordsave for example, this is because you are working with one location
-#in that case, please delete the lines below. If you are working with both, please run 'chikwawa' first and then 'mwakimeme'. In that way, the points will be plotted on the same map.
-ax = nsidc2.plot_points(ax, Ccoord_xy, marker='o', color='r', linewidth=0., transform=ccrs.PlateCarree())
-ax = nsidc2.plot_points(ax, Mcoord_xy, marker='o', color='g', linewidth=0., transform=ccrs.PlateCarree())
-ax = nsidc2.plot_points(ax, wcpointsnew, marker='o', color='k', linewidth=0., transform=ccrs.PlateCarree())
-ax = nsidc2.plot_points(ax, Ccoordsave, marker='o', color='r', linewidth=0., transform=ccrs.PlateCarree())
-ax = nsidc2.plot_points(ax, Mcoordsave, marker='o', color='g', linewidth=0., transform=ccrs.PlateCarree())
-ax = nsidc2.plot_points(ax, wcpointsnewsave, marker='o', color='k', linewidth=0., transform=ccrs.PlateCarree())
+if location == 'chikwawa':
+    loni, lati = pyproj.transform(proj_in, proj_out, xi, yi)
+    p = ax.pcolormesh(loni, lati, ds['TB'].values[5], transform=ccrs.PlateCarree(), cmap='terrain')
+    # also plot some points of interest  -> note that this plots both locations in one plot, if the script does not not Ccoordsave and Mccoordsave for example, this is because you are working with one location
+    #in that case, please delete the lines below. If you are working with both, please run 'chikwawa' first and then 'mwakimeme'. In that way, the points will be plotted on the same map.
+    ax = nsidc2.plot_points(ax, Ccoordsave, marker='o', color='r', linewidth=0., transform=ccrs.PlateCarree())
+    ax = nsidc2.plot_points(ax, Mcoordsave, marker='o', color='g', linewidth=0., transform=ccrs.PlateCarree())
+    ax = nsidc2.plot_points(ax, wcpointsnewsave, marker='o', color='k', linewidth=0., transform=ccrs.PlateCarree())
+else:
+    ax = nsidc2.plot_points(ax, Ccoord_xy, marker='o', color='r', linewidth=0., transform=ccrs.PlateCarree())
+    ax = nsidc2.plot_points(ax, Mcoord_xy, marker='o', color='g', linewidth=0., transform=ccrs.PlateCarree())
+    ax = nsidc2.plot_points(ax, wcpointsnew, marker='o', color='k', linewidth=0., transform=ccrs.PlateCarree())
 
 plt.colorbar(p, label='Brightness temperature [K]')
 gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
